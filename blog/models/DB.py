@@ -6,6 +6,7 @@ from sqlalchemy import Table, Integer, MetaData, Column,\
 DB_CONNECT_STRING = "mysql+mysqldb://root:@localhost/blog?charset=utf8"
 engine = create_engine(DB_CONNECT_STRING,echo=True)
 m = MetaData()
+
 blog = Table("blog", m,
              Column("id", Integer, primary_key=True, autoincrement=True),
              Column("title", CHAR(20)),
@@ -26,10 +27,10 @@ comment = Table("comment", m,
                 Column("time", TIMESTAMP),
                 )
 
-
+#初始化数据库
 def init_db():
     m.create_all(engine)
-
+#清空数据库
 def drop_db():
     m.drop_all(engine)
 
