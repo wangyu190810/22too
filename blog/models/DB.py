@@ -1,9 +1,11 @@
+#-*-coding:utf-8-*-
 __author__ = 'iTianpin'
+
 from sqlalchemy import create_engine
 from sqlalchemy import Table, Integer, MetaData, Column,\
     TEXT, CHAR, TIMESTAMP
 
-DB_CONNECT_STRING = "mysql+mysqldb://root:@localhost/blog?charset=utf8"
+DB_CONNECT_STRING = "mysql+mysqldb://22too:123456@localhost/22too?charset=utf8"
 engine = create_engine(DB_CONNECT_STRING,echo=True)
 m = MetaData()
 
@@ -16,6 +18,7 @@ blog = Table("blog", m,
              Column("time", TIMESTAMP),
              Column("user", CHAR(20)),
              Column("skim", Integer),
+             Column("comment_nums",Integer),
             )
 
 comment = Table("comment", m,
@@ -23,7 +26,8 @@ comment = Table("comment", m,
                 Column("blog_id", Integer),
                 Column("content", TEXT),
                 Column("html", TEXT),
-                Column("user", CHAR),
+                Column("email", CHAR(40)),
+                Column("username",CHAR(20)),
                 Column("time", TIMESTAMP),
                 )
 
