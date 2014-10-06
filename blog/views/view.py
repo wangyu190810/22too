@@ -70,7 +70,7 @@ def login(self):
     if not self.current_user:
         email = self.get_argument("email")
         password = self.get_argument("password")
-        if email == "wo190810401@gmail.com" and password == "***********":
+        if email == "wo190810401@gmail.com" and password == "12345678":
             self.set_secure_cookie("email",email)
         else:
             return self.redirect("/")
