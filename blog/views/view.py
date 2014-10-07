@@ -87,4 +87,25 @@ def read(self, blog_id):
     results = conn.execute(B)
     self.render("blog.html",results=results)
 
+def pull(self,blog_id):
+    id = blog_id
+    print id
+    print id
+    conn = engine.connect()
+    B = select([blog.c.title,blog.c.content]).\
+        where(blog.c.id == id)
+    results = conn.execute(B)
+    for result in results:
+        title = result[0]
+        content = result[1]
+    self.render("change.html", title=title, content=content)
+
+
+def push(self,blog_id):
+    id = blog_id
+    title = self.get_argument("title")
+    tag = self.get_argument("tag")
+    content= self.get_argument("content")
+    update = blog.update()
+    conn = engine.connect()
 
