@@ -2,7 +2,7 @@
 __author__ = 'iTianpin'
 import tornado.web
 import tornado.ioloop
-from views.view import index, edit, tag, login, read
+from views.view import index, edit, tag, login, read,pull,push
 import os
 
 class BaseHandler(tornado.web.RequestHandler):
@@ -43,6 +43,12 @@ class BlogHandler(BaseHandler):
         print blog_id
         read(self, blog_id)
 
+class ChangeHandler(BaseHandler):
+    def get(self,blog_id):
+        pull(self,blog_id)
+    def post(self,blog_id):
+        push(self,blog_id)
+
 settings = {
     "static_path": os.path.join(os.path.dirname(__file__), "static"),
     "cookie_secret": "61oETzKXQAGaYdkL5gEmGeJJFuYh7EQnp2XdTP1o/Vo=",
@@ -58,7 +64,7 @@ application = tornado.web.Application([
     (r"/tag/(\w+)",TagHandler),
     (r"/login",LoginHandler),
     (r"/blog/([0-9]+)",BlogHandler),
-#    (r"/a",MainHandler)
+    (r"/change/([0-9]+)",ChangeHandler),
 
 ], **settings)
 
