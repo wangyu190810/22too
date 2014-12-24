@@ -1,0 +1,41 @@
+__author__ = 'wangyu'
+from flask import Flask,g,current_app
+from sqlalchemy.orm import sessionmaker,scoped_session
+from sqlalchemy import create_engine
+from datetime import timedelta
+
+from mysite.view.blog import index,edit,search,arch,blog,blog_tag,blog_classify
+from mysite.view.login import login,logout
+from config import Config
+
+
+app = Flask(__name__)
+app.secret_key = Config.SUCCESS_KEY
+app.permanent_session_lifetime = timedelta(minutes=60)
+app.config["SQLALCHEMY_DATABASE_URI"] = Config.db
+
+app.sa_engine = create_engine(Config.db)
+app.DBSession = scoped_session(sessionmaker(bind=app.sa_engine))
+
+app.add_url_rule("/",view_func=index,methods=["GET", "POST"])
+app.add_url_rule("/edit",view_func=edit,methods=["GET", "POST"])
+app.add_url_rule("/search",view_func=search,methods=["GET"])
+
+app.add_url_rule("/arch",view_func=arch,methods=["GET"])
+app.add_url_rule("/blog/<int:blog_id>",view_func=blog,methods=["GET","POST"])
+app.add_url_rule("/tag/<tag>",view_func=blog_tag,methods=["GET","POST"])
+app.add_url_rule("/classify/<name>",view_func=blog_classify,methods=["GET","POST"])
+
+app.add_url_rule("/login",view_func=login,methods=["GET","POST"])
+app.add_url_rule("/logout",view_func=logout,methods=["GET","POST"])
+
+
+@app.before_request
+def _before_request():
+    g.db = current_app.DBSession()
+
+
+@app.teardown_request
+def teardown_request(*a, **k):
+    current_app.DBSession.remove()
+    g.db.close()
