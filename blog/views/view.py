@@ -80,11 +80,36 @@ def login(self):
 #阅读blog
 def read(self, blog_id):
     id = blog_id
+    change = 0
+    if self.current_user:
+        change = 1
+
     print id
     conn = engine.connect()
     B = select([blog.c.title,blog.c.html,blog.c.time,blog.c.tag,blog.c.id]).\
         where(blog.c.id == id)
     results = conn.execute(B)
-    self.render("blog.html",results=results)
+    self.render("blog.html",results=results, change=change)
 
+def pull(self,blog_id):
+    id = blog_id
+    print id
+    print id
+    conn = engine.connect()
+    B = select([blog.c.title,blog.c.content]).\
+        where(blog.c.id == id)
+    results = conn.execute(B)
+    for result in results:
+        title = result[0]
+        content = result[1]
+    self.render("change.html", title=title, content=content)
+
+
+def push(self,blog_id):
+    id = blog_id
+    title = self.get_argument("title")
+    tag = self.get_argument("tag")
+    content= self.get_argument("content")
+    update = blog.update()
+    conn = engine.connect()
 

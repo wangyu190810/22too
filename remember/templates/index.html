@@ -4,13 +4,11 @@
     {% for result in results%}
         <h1>{{result[0]}}</h1>
          <h3>{{result[3]}}</h3>
+       <h3>这是博主的第{{result[4]}}篇blog</h3>
         <h3>{{result[2]}}</h3>
-             {% if change %}
-            <a href="/change/{{result[4]}}">编辑</a>
-             {% end %}
-         {% raw result[1] %}
-    {% end %}
-        </p>
-{% end %}
 
+        {% raw result[1] %}
+
+    {% end %}
+{% end %}
 
