@@ -6,6 +6,7 @@ from datetime import timedelta
 
 from mysite.view.blog import index,edit,search,arch,blog,blog_tag,blog_classify
 from mysite.view.login import login,logout
+from mysite.view.toole import google
 from config import Config
 
 
@@ -29,6 +30,7 @@ app.add_url_rule("/classify/<name>",view_func=blog_classify,methods=["GET","POST
 app.add_url_rule("/login",view_func=login,methods=["GET","POST"])
 app.add_url_rule("/logout",view_func=logout,methods=["GET","POST"])
 
+app.add_url_rule("/googlefad2f2add41d5dac.html",view_func=google)
 
 @app.before_request
 def _before_request():
