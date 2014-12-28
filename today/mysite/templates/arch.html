@@ -3,7 +3,7 @@
 {% block content%}
     {% for blog in blogs %}
         <div class="blog-post">
-            <h3 class="blog-post-title"><a href="blog/{{ blog.id }}"> {{ blog.title }}</a></h3>
+            <h3 class="blog-post-title"><a href="/blog/{{ blog.id }}"> {{ blog.title }}</a></h3>
             <p class="blog-post-meta">{{ blog.date }} </p>
             <p></p>
             <tag> {{ blog.content_html|safe }}</tag>
