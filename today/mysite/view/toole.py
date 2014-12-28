@@ -7,8 +7,8 @@
 #Description: 
 
 
-from flask import reader_template
+from flask import render_template
 
 def google():
-    return reader_template("googlefad2f2add41d5dac.html")
+    return render_template("googlefad2f2add41d5dac.html")
 

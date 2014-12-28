@@ -30,7 +30,7 @@ app.add_url_rule("/classify/<name>",view_func=blog_classify,methods=["GET","POST
 app.add_url_rule("/login",view_func=login,methods=["GET","POST"])
 app.add_url_rule("/logout",view_func=logout,methods=["GET","POST"])
 
-app.add_url_rule("googlefad2f2add41d5dac.html",view_func=google,methods = ["GET"])
+app.add_url_rule("/googlefad2f2add41d5dac.html",view_func=google)
 
 @app.before_request
 def _before_request():
