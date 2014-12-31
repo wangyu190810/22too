@@ -15,6 +15,7 @@ class Blog(Base):
     tag = Column(String(80),doc=u"使用|||作为多个标签的分隔")
     classify = Column(TEXT)
     content_html = Column(TEXT)
+    status = Column(Integer,default=1,doc=u"默认为1，删除为0")
     img = Column(String(80),default="")
     readNum = Column(Integer,nullable=False,default=0)
     commentNum = Column(Integer,nullable=False,default=0)
@@ -34,11 +35,11 @@ class Blog(Base):
     
     @classmethod
     def blogList(cls,connection):
-        return connection.query(Blog).filter_by().order_by(Blog.id.desc()).all()
+        return connection.query(Blog).filter_by(status=1).order_by(Blog.id.desc()).all()
 
     @classmethod
-    def blog(cls,connection,blog_id):
-        return connection.query(Blog).filter_by(id=blog_id)
+    def blog(cls,connection,blog_id,status):
+        return connection.query(Blog).filter_by(id=blog_id,status=status)
 
     @classmethod
     def blog_tag(cls,connection,name):
@@ -49,3 +50,17 @@ class Blog(Base):
     def get_classify(cls,connection,name):
         return connection.query(Blog).filter_by(classify=name)
 
+    @classmethod
+    def blog_change(cls,connection,blog_id,title,classify,content_md,tag,img,status):
+        content_html = markdown2.markdown(content_md)
+        connection.query(Blog).filter(Blog.id ==blog_id).update({
+            "title":title,
+            "classify":classify,
+            "content_md":content_md,
+            "content_html":content_html,
+            "status":status,
+            "tag":tag,
+            "img":img
+        }
+        )
+        connection.commit()

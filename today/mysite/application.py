@@ -4,7 +4,7 @@ from sqlalchemy.orm import sessionmaker,scoped_session
 from sqlalchemy import create_engine
 from datetime import timedelta
 
-from mysite.view.blog import index,edit,search,arch,blog,blog_tag,blog_classify
+from mysite.view.blog import index,edit,search,arch,blog,blog_tag,blog_classify,blog_change
 from mysite.view.login import login,logout
 from mysite.view.toole import google
 from config import Config
@@ -20,12 +20,14 @@ app.DBSession = scoped_session(sessionmaker(bind=app.sa_engine))
 
 app.add_url_rule("/",view_func=index,methods=["GET", "POST"])
 app.add_url_rule("/edit",view_func=edit,methods=["GET", "POST"])
+app.add_url_rule("/change/<int:blog_id>",view_func=blog_change,methods=["GET","POST"])
 app.add_url_rule("/search",view_func=search,methods=["GET"])
 
 app.add_url_rule("/arch",view_func=arch,methods=["GET"])
 app.add_url_rule("/blog/<int:blog_id>",view_func=blog,methods=["GET","POST"])
 app.add_url_rule("/tag/<tag>",view_func=blog_tag,methods=["GET","POST"])
 app.add_url_rule("/classify/<name>",view_func=blog_classify,methods=["GET","POST"])
+
 
 app.add_url_rule("/login",view_func=login,methods=["GET","POST"])
 app.add_url_rule("/logout",view_func=logout,methods=["GET","POST"])

@@ -30,7 +30,7 @@ def arch():
 
 def blog(blog_id):
     print blog_id
-    return render_template("blog.html",blogs = Blog.blog(g.db,blog_id=blog_id))
+    return render_template("blog.html",blogs = Blog.blog(g.db,blog_id=blog_id,status=1))
 
 def blog_tag(tag):
     
@@ -39,3 +39,19 @@ def blog_tag(tag):
 def blog_classify(name):
     print name
     return render_template("arch.html",blogs = Blog.get_classify(g.db,name))
+
+@validate_user_login
+def blog_change(blog_id):
+    if request.method == "GET":
+        print blog_id
+        return render_template("change.html",blogs = Blog.blog(g.db,blog_id=blog_id))
+    else:
+        title,classify,content_md,tag,img,status = map(request.form.get, ("title","classify","content_md","tag","img","status"))
+        Blog.blog_change(g.db,blog_id=blog_id,title=title,classify=classify,content_md=content_md,tag=tag,img=img,status=status)
+        return redirect("/")
+
+
+
+
+
+
