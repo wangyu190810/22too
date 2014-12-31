@@ -1,8 +1,7 @@
 #!-*-coding:utf-8-*-
 __author__ = 'wangyu'
 from flask import render_template,request,g,redirect,jsonify
-from markdown2 import markdown
-from datetime import date
+
 from mysite.model.blog import Blog
 from mysite.view.base import validate_user_login
 
