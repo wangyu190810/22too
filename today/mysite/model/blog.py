@@ -38,7 +38,9 @@ class Blog(Base):
         return connection.query(Blog).filter_by(status=1).order_by(Blog.id.desc()).all()
 
     @classmethod
-    def blog(cls,connection,blog_id,status):
+    def blog(cls,connection,blog_id,status=None):
+        if status == None:
+            return connection.query(Blog).filter_by(id=blog_id)
         return connection.query(Blog).filter_by(id=blog_id,status=status)
 
     @classmethod
