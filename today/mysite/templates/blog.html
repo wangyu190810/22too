@@ -1,5 +1,10 @@
 {% extends "base.html" %}
-{% block title %}22too{% endblock %}
+ 
+{% block title %}
+    {% for blog in blogs %}
+       {{ blog.title}}
+    {% endfor %}
+{% endblock %}
 {% block content%}
     {% for blog in blogs %}
         <p>{{ blog.title}}</p>
