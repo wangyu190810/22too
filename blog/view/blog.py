@@ -5,7 +5,7 @@ __author__ = 'wangyu'
 from flask import render_template, request, g, redirect, jsonify
 
 from ..model.blog import Blog
-from .base import validate_user_login
+from ..lib.decorator import validate_user_login
 
 
 def index():
