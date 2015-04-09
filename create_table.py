@@ -3,7 +3,7 @@
 __author__ = 'wangyu'
 
 from model.base import Base
-from application import app
+from app import app
 
 
 Base.metadata.create_all(app.sa_engine)
