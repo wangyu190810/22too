@@ -2,8 +2,8 @@
 
 __author__ = 'wangyu'
 
-from blog.application import app
+from application import app
 
 
 if __name__ == '__main__':
-    app.run(port=1989, debug=True)
+    app.run(debug=True)

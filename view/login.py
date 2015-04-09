@@ -4,7 +4,7 @@ __author__ = 'wangyu'
 
 from flask import render_template, redirect, g, session, request
 
-from ..model.user import User
+from model.user import User
 
 
 def login():

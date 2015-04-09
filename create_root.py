@@ -2,8 +2,8 @@
 
 __author__ = 'wangyu'
 
-from blog.model.user import User
-from blog.application import app
+from model.user import User
+from application import app
 
 
 def root():

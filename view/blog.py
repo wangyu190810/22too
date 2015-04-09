@@ -4,8 +4,8 @@ __author__ = 'wangyu'
 
 from flask import render_template, request, g, redirect, jsonify
 
-from ..model.blog import Blog
-from ..lib.decorator import validate_user_login
+from model.blog import Blog
+from lib.decorator import validate_user_login
 
 
 def index():
