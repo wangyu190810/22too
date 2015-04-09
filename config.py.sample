@@ -1,0 +1,8 @@
+# -*-coding: utf-8-*-
+
+__author__ = 'wangyu'
+
+
+class Config(object):
+    db = "postgresql://{change me}"
+    SUCCESS_KEY = "change me"

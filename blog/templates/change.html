@@ -1,42 +1,29 @@
-<!doctype html>
-<html>
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<link href={{static_url("css/bootstrap.min.css")}} rel="stylesheet">
-<script src={{static_url("ls/jquery.js")}}></script>
-<script src={{static_url("js/bootstrap.min.js")}}></script>
-    <title>edit</title>
-<script>
-.center {
-  width: auto;
-  display: table;
-  margin-left: auto;
-  margin-right: auto;
-}
-.text-center {
-  text-align: center;
-}
-</script>
+{% extends "base.html" %}
+{% block title %}edit{% endblock %}
+{% block content %}
+    {%for blog in blogs %}
+    <form method="post">
+        博客标题<input type="text" name="title" value="{{blog.title}}"></p>
+        博客标签<input type="text" name="tag" value="{{blog.tag}}"></p>
+        分类<select name="classify">
+            <option value="doc">文档</option>
+            <option value="mind">心情</option>
+            <option value="soft">软件</option>
+            <option value="book">读书</option>
+            <option value="novel">小说</option>
+            <option value="movie">电影</option>
+            </select>
+        <p></p>
+        状态<select name="status">
+                <option value="1">显示</option>
+                <option value="0">不显示</option>
+            </select>
 
-    </head>
-<body>
+        <textarea name="content_md" rows="10" cols="70%" placeholder="支持markdown编辑">{{blog.content_md}}</textarea>
 
-<div class="container">
-    <h2><a href="/tag/python">python</a>   <a href="/tag/life">life</a>  <a href="/download">download</a> <a href="/tag/study">study</a></h2>
-
-<form action="" method="post">
-     {% raw xsrf_form_html() %}
-    <input type="text" name="title" value="{{title}}"><p>
-     <select name="tag">
-      <option value="python">python</option>
-      <option value="life">life</option>
-      <option value="study">study</option>
-  </select><p>
-    <textarea name="content" cols="70%" rows="20%">{{content}}</textarea>
-    </p>
-
-    <input type="submit" value="确定">
-</form>
-</div>
-</body>
+        <p></p>
+        <input type="text" name="img" value="{{blog.img}}"></p>
+        <input type="submit">
+    </form>
+    {% endfor %}
+{% endblock %}

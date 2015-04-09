@@ -1,3 +1,0 @@
-flask
-sqlalchmy
-pgcoyg2

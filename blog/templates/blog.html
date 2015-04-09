@@ -1,16 +1,14 @@
-{%extends "base.html"%}
-        {%block title%}22too{%end%}
-{%block content%}
-    {% for result in results%}
-        <h1>{{result[0]}}</h1>
-         <h3>{{result[3]}}</h3>
-        <h3>{{result[2]}}</h3>
-             {% if change %}
-            <a href="/change/{{result[4]}}">编辑</a>
-             {% end %}
-         {% raw result[1] %}
-    {% end %}
-        </p>
-{% end %}
-
-
+{% extends "base.html" %}
+ 
+{% block title %}
+    {% for blog in blogs %}
+       {{ blog.title}}
+    {% endfor %}
+{% endblock %}
+{% block content%}
+    {% for blog in blogs %}
+        <p>{{ blog.title}}</p>
+        <p>{{ blog.date }}</p>
+        {{blog.content_html|safe}}
+    {% endfor %}
+{% endblock %}
