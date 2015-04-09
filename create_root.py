@@ -3,14 +3,19 @@
 __author__ = 'wangyu'
 
 from model.user import User
-from application import app
+from app import app
 
 
 def root():
-    username = raw_input("username")
-    password = raw_input("password")
-    user = User(username=username, password=password)
-    app.DBSession.add(user)
-    app.DBSession.commit()
+    username = raw_input("username: ")
+    password = raw_input("password: ")
+    repassword = raw_input("repassword: ")
+    if password == repassword:
+        user = User(username=username)
+        user.set_password(password)
+        app.DBSession.add(user)
+        app.DBSession.commit()
+    else:
+        return 
 
 root()
