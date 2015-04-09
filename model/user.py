@@ -19,20 +19,11 @@ class User(Base):
     password_salt = Column(String(8), default=lambda: random_string(8))
 
     @classmethod
-    def create_user(cls, connection, username, password):
-        user = User(username=username)
-        user.set_password(password)
-        connection.add(user)
-        connection.commit()
-
-    @classmethod
     def check_user(cls, connection, username, password):
-        try:
-            user = connection.query(User).filter_by(username=username)
-            if user.encrypt_password(password) != user.password_hash:
-                user = None
-        except cls.DoesNotExist:
-            user = None
+        user = connection.query(User).filter_by(username=username)
+
+        if user.scalar().encrypt_password(password) != user.scalar().password_hash:
+            return False
         return connection.execute(user).scalar()
 
     def encrypt_password(self, password, salt=None):

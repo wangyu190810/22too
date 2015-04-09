@@ -12,12 +12,11 @@ def login():
         return render_template("login.html")
 
     username, password = map(request.form.get, ("username", "password"))
-    userLogin = User.checkUser(g.db, username, password)
-    if userLogin:
+    check = User.check_user(g.db, username, password)
+    if check:
         session["username"] = username
-        print session
         return redirect("/edit")
-    return redirect("/index")
+    return u'用户名密码错误'
 
 
 def logout():

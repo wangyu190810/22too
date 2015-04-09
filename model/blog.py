@@ -25,7 +25,7 @@ class Blog(Base):
     date = Column(Date, default=lambda: date.today())
 
     @classmethod
-    def addBlog(self, connection, title, content_md, classify, tag, img):
+    def add_blog(cls, connection, title, content_md, classify, tag, img):
         content_html = markdown2.markdown(content_md)
         blog = Blog(title=title, classify=classify, content_md=content_md, tag=tag, content_html=content_html, img=img)
         print blog
@@ -37,7 +37,7 @@ class Blog(Base):
         return connection.query(Blog).filter_by().order_by(Blog.id.desc()).limit(1)
     
     @classmethod
-    def blogList(cls, connection):
+    def blog_list(cls, connection):
         return connection.query(Blog).filter_by(status=1).order_by(Blog.id.desc()).all()
 
     @classmethod

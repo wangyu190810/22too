@@ -10,8 +10,7 @@ from sqlalchemy import create_engine
 
 from config import Config
 from view.toole import google
-from view.login import logout
-from view import login
+from view.login import login, logout
 from view.blog import index, edit, search, arch, blog, blog_tag, blog_classify, blog_change
 
 

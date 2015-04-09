@@ -18,18 +18,18 @@ def edit():
         return render_template("edit.html")
     if request.method == "POST":
         title, classify, content_md, tag, img = map(request.form.get, ("title", "classify", "content_md", "tag", "img"))
-        Blog.addBlog(g.db, title=title, content_md=content_md, classify=classify, tag=tag, img=img)
+        Blog.add_blog(g.db, title=title, content_md=content_md, classify=classify, tag=tag, img=img)
         return redirect("/")
 
 
 def search():
     eq = request.form.getlist("eq")
-    title = Blog.blogList(g.db, eq)
+    title = Blog.blog_list(g.db, eq)
     return jsonify(title)
 
 
 def arch():
-    return render_template("arch.html", blogs=Blog.blogList(g.db))
+    return render_template("arch.html", blogs=Blog.blog_list(g.db))
 
 
 def blog(blog_id):
@@ -38,19 +38,16 @@ def blog(blog_id):
 
 
 def blog_tag(tag):
-    
     return render_template("arch.html", blogs=Blog.blog_tag(g.db, tag))
 
 
 def blog_classify(name):
-    print name
     return render_template("arch.html", blogs=Blog.get_classify(g.db, name))
 
 
 @validate_user_login
 def blog_change(blog_id):
     if request.method == "GET":
-        print blog_id
         return render_template("change.html", blogs=Blog.blog(g.db, blog_id=blog_id))
     else:
         title, classify, content_md, tag, img, status = map(
