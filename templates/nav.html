@@ -1,14 +1,38 @@
-<div class="blog-masthead">
-  <div class="container">
-    <nav class="blog-nav">
-      <a class="blog-nav-item active" href="/">Home</a>
-      <a class="blog-nav-item" href="/arch">归档</a>
-      <a class="blog-nav-item" href="/classify/mind">心情</a>
-      <a class="blog-nav-item" href="/classify/soft">软件</a>
-      <a class="blog-nav-item" href="/classify/book">读书</a>
-      <a class="blog-nav-item" href="/classify/novel">小说</a>
-      <a class="blog-nav-item" href="#">关于</a>
-      <a class="blog-nav-item" href="/login">login</a>
-    </nav>
+<nav class="navbar">
+
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">
+          <strong>
+            YuBlog
+          </strong>
+      </a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="/arch">归档</a></li>
+        <li><a href="/classify/mind">心情</a></li>
+        <li><a href="/classify/soft">软件</a></li>
+        <li><a href="/classify/book">读书</a></li>
+        <li><a href="/classify/novel">小说</a></li>
+        <div class="form-group navbar-form navbar-right">
+          <form method="post" action="#">
+            <input type="text" class="form-control" name="search" placeholder="Search">
+          </form>
+        </div>
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="/login">登录</a></li>
+      </ul>
+    </div>
+
   </div>
-</div>
+</nav>
