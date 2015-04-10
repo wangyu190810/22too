@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+ 
+{% block title %}
+    {% for blog in blogs %}
+       {{ blog.title}}
+    {% endfor %}
+{% endblock %}
+{% block content%}
+    {% for blog in blogs %}
+        <p>{{ blog.title}}</p>
+        <p>{{ blog.date }}</p>
+        {{blog.content_html|safe}}
+    {% endfor %}
+{% endblock %}

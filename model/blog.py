@@ -6,6 +6,9 @@ from datetime import date
 
 import markdown2
 from sqlalchemy import Column, Integer, String, TEXT, Date
+import sqlalchemy
+
+sqlalchemy.func.yearmonth()
 
 from .base import Base
 
@@ -33,12 +36,16 @@ class Blog(Base):
         connection.commit()
     
     @classmethod
-    def index(cls, connection):
-        return connection.query(Blog).filter_by().order_by(Blog.id.desc()).limit(1)
-    
+    def get_classify(cls, connection, name):
+        return connection.query(Blog).filter_by(classify=name)
+
     @classmethod
-    def blog_list(cls, connection):
-        return connection.query(Blog).filter_by(status=1).order_by(Blog.id.desc()).all()
+    def get_arch_dates(cls, connection):
+        return connection.query(Blog.date).filter_by(status=1).order_by(Blog.date.desc()).distinct()
+
+    @classmethod
+    def index(cls, connection):
+        return connection.query(Blog).filter_by(status=1).order_by(Blog.id.desc()).limit(5)
 
     @classmethod
     def blog(cls, connection, blog_id, status=None):
@@ -50,10 +57,6 @@ class Blog(Base):
     def blog_tag(cls, connection, name):
         tag_name = "%s" + name + "%s"
         return connection.query(Blog).filter(Blog.tag.like(tag_name)).order_by(Blog.id.desc())
-
-    @classmethod
-    def get_classify(cls, connection, name):
-        return connection.query(Blog).filter_by(classify=name)
 
     @classmethod
     def blog_change(cls, connection, blog_id, title, classify, content_md, tag, img, status):

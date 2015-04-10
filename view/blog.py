@@ -9,7 +9,7 @@ from lib.decorator import validate_user_login
 
 
 def index():
-    return render_template("index.html", blogs=Blog.index(g.db))
+    return render_template("index.html", blogs=Blog.index(g.db), dates=Blog.get_arch_dates(g.db))
 
 
 @validate_user_login
@@ -23,27 +23,26 @@ def edit():
         return redirect("/")
 
 
+def blog(blog_id):
+    return render_template("details.html", blogs=Blog.blog(g.db, blog_id=blog_id, status=1))
+
+
+def blog_classify_by_name(name):
+    return render_template("index.html", blogs=Blog.get_classify(g.db, name))
+
+
 def search():
     eq = request.form.getlist("eq")
     title = Blog.blog_list(g.db, eq)
     return jsonify(title)
 
 
-def arch():
-    return render_template("arch.html", blogs=Blog.blog_list(g.db))
+def blog_classify_by_tag(tag):
+    return render_template("index.html", blogs=Blog.blog_tag(g.db, tag))
 
 
-def blog(blog_id):
-    print blog_id
-    return render_template("blog.html", blogs=Blog.blog(g.db, blog_id=blog_id, status=1))
-
-
-def blog_tag(tag):
-    return render_template("arch.html", blogs=Blog.blog_tag(g.db, tag))
-
-
-def blog_classify(name):
-    return render_template("arch.html", blogs=Blog.get_classify(g.db, name))
+def blog_classify_by_date(date):
+    return render_template("index.html", blogs=Blog.blog_tag(g.db, date))
 
 
 @validate_user_login
