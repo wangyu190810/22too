@@ -19,7 +19,11 @@ class User(Base):
     password_salt = Column(String(8), default=lambda: random_string(8))
 
     @classmethod
-    def check_user(cls, connection, username, password):
+    def has_user(cls, connection, username):
+        return bool(connection.query(User).filter_by(username=username).scalar())
+
+    @classmethod
+    def check_password(cls, connection, username, password):
         user = connection.query(User).filter_by(username=username)
 
         if user.scalar().encrypt_password(password) != user.scalar().password_hash:

@@ -2,7 +2,7 @@
 
 __author__ = 'wangyu'
 
-from flask import render_template, redirect, g, session, request
+from flask import render_template, redirect, g, session, request, jsonify
 
 from model.user import User
 
@@ -12,11 +12,15 @@ def login():
         return render_template("login.html")
 
     username, password = map(request.form.get, ("username", "password"))
-    check = User.check_user(g.db, username, password)
-    if check:
-        session["username"] = username
-        return redirect("/edit")
-    return u'用户名密码错误'
+    has_user = User.has_user(g.db, username)
+    if has_user:
+        check_password = User.check_password(g.db, username, password)
+        if check_password:
+            session["username"] = username
+            return redirect("/edit")
+        else:
+            return jsonify(status=400, message=u'密码错误')
+    return jsonify(status=400, message=u'用户名错误')
 
 
 def logout():
