@@ -21,4 +21,4 @@ def login():
 
 def logout():
     session.pop("username")
-    return redirect("/index")
+    return redirect("/")

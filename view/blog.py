@@ -16,6 +16,7 @@ def index():
 def edit():
     if request.method == "GET":
         return render_template("edit.html")
+
     if request.method == "POST":
         title, classify, content_md, tag, img = map(request.form.get, ("title", "classify", "content_md", "tag", "img"))
         Blog.add_blog(g.db, title=title, content_md=content_md, classify=classify, tag=tag, img=img)
