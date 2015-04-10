@@ -16,11 +16,10 @@ def root():
         print
         password = raw_input("password: ")
         repassword = raw_input("repassword: ")
-
-        user = User(username=username)
-        user.set_password(password)
-        app.DBSession.add(user)
-        app.DBSession.commit()
+    user = User(username=username)
+    user.set_password(password)
+    app.DBSession.add(user)
+    app.DBSession.commit()
 
 
 if __name__ == '__main__':
