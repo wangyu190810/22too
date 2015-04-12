@@ -9,7 +9,8 @@ from lib.decorator import validate_user_login
 
 
 def index():
-    return render_template("index.html", blogs=Blog.index(g.db), dates=Blog.get_arch_dates(g.db))
+    dates = Blog.get_arch_dates(g.db)
+    return render_template("index.html", blogs=Blog.index(g.db), dates=dates)
 
 
 @validate_user_login
