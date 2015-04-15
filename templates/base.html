@@ -1,0 +1,17 @@
+{% extends "root_base.html" %}
+
+{% block nav %}{% include "nav.html" %}{% endblock %}
+
+{% block container %}
+  <div class="row">
+    {% block row %}
+
+      <div class="col-sm-8 blog-main">
+        {% block content %}{% endblock %}
+      </div>
+
+      {% include "side_row.html" %}
+
+    {% endblock %}
+  </div><!-- /.row -->
+{% endblock %}
