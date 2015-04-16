@@ -7,7 +7,7 @@ from sqlalchemy import Column, Integer, TEXT
 from .base import Base
 
 
-class Blog(Base):
+class Comment(Base):
     __tablename__ = "comment"
     id = Column(Integer, primary_key=True, autoincrement=True)
     content = Column(TEXT)
