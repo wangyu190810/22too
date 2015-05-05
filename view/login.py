@@ -17,7 +17,7 @@ def login():
         check_password = User.check_password(g.db, username, password)
         if check_password:
             session["username"] = username
-            return redirect("/edit")
+            return redirect("/admin")
         else:
             return jsonify(status=400, message=u'密码错误')
     return jsonify(status=400, message=u'用户名错误')

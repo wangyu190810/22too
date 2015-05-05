@@ -24,6 +24,21 @@ def edit():
         return redirect("/")
 
 
+def set_blog_status(blog_id):
+    if request.method == "POST":
+        data = request.form.get("status",int)
+        print data
+        if Blog.set_blog_status(g.db,blog_id,status=data):
+            return jsonify(status="success")
+    return jsonify(status="false")
+
+
+def get_blog_from_date(date):
+    if request.method == "GET":
+        return render_template("date_arch.html", blogs=Blog.get_blog_form_data(g.db,date))
+    return render_template("date_arch.html", blogs=None)
+
+
 def blog(blog_id):
     return render_template("details.html", blogs=Blog.blog(g.db, blog_id=blog_id, status=1))
 

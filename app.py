@@ -11,8 +11,9 @@ from sqlalchemy import create_engine
 from config import Config
 from view.toole import google
 from view.login import login, logout
-from view.blog import index, edit, search, blog, blog_classify_by_name, blog_change
-
+from view.blog import index, edit, search, blog, blog_classify_by_name, \
+    blog_change, set_blog_status,get_blog_from_date
+from view.admin import admin_index
 
 app = Flask(__name__)
 app.secret_key = Config.SUCCESS_KEY
@@ -33,8 +34,13 @@ app.add_url_rule("/classify/<name>", view_func=blog_classify_by_name, methods=["
 app.add_url_rule("/edit", view_func=edit, methods=["GET", "POST"])
 app.add_url_rule("/change/<int:blog_id>", view_func=blog_change, methods=["GET", "POST"])
 app.add_url_rule("/search", view_func=search, methods=["GET"])
+app.add_url_rule("/status/<int:blog_id>",view_func=set_blog_status,methods=["POST"])
+app.add_url_rule("/date_arch/<date>",view_func=get_blog_from_date,methods=["GET"])
 
 # app.add_url_rule("/tag/<tag>", view_func=blog_tag, methods=["GET", "POST"])
+
+# ---- admin ----
+app.add_url_rule("/admin", view_func=admin_index,methods=["GET"])
 
 
 

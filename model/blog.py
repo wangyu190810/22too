@@ -10,7 +10,7 @@ import sqlalchemy
 
 sqlalchemy.func.yearmonth()
 
-from .base import Base
+from base import Base
 
 
 class Blog(Base):
@@ -34,14 +34,29 @@ class Blog(Base):
         print blog
         connection.add(blog)
         connection.commit()
-    
+
+    @classmethod
+    def admin_index(cls,connection):
+        return connection.query(Blog)
+
     @classmethod
     def get_classify(cls, connection, name):
         return connection.query(Blog).filter_by(classify=name)
 
     @classmethod
+    def set_blog_status(cls,connection,blog_id,status):
+        connection.query(Blog).filter(Blog.id == blog_id).\
+            update({Blog.status:status})
+        connection.commit()
+        return True
+
+    @classmethod
     def get_arch_dates(cls, connection):
         return connection.query(Blog.date).filter(Blog.status == 1).order_by(Blog.date.desc()).distinct()
+
+    @classmethod
+    def get_blog_form_data(cls, connection, date):
+        return connection.query(Blog).filter(Blog.status == 1).filter(Blog.date >= date)
 
     @classmethod
     def index(cls, connection):
