@@ -5,7 +5,7 @@ __author__ = 'wangyu'
 from datetime import date
 
 import markdown2
-from sqlalchemy import Column, Integer, String, TEXT, Date
+from sqlalchemy import Column, Integer, String, TEXT, Date,func
 import sqlalchemy
 
 sqlalchemy.func.yearmonth()
@@ -41,7 +41,7 @@ class Blog(Base):
 
     @classmethod
     def get_classify(cls, connection, name):
-        return connection.query(Blog).filter_by(classify=name)
+        return connection.query(Blog).filter_by(classify=name).order_by(Blog.id.desc())
 
     @classmethod
     def set_blog_status(cls,connection,blog_id,status):
@@ -86,3 +86,7 @@ class Blog(Base):
             "img": img
         })
         connection.commit()
+
+    @classmethod
+    def rss_blog(cls,connection):
+        return connection.query(Blog).order_by(Blog.id.desc())
