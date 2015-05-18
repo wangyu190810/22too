@@ -249,7 +249,7 @@
 
     继续执行：
         
-        wangyu@ubuntu:~/workspace/code/rust/site-demo$ cargo build 
+        xxxx@ubuntu:~/workspace/code/rust/site-demo$ cargo build 
         Updating registry `https://github.com/rust-lang/crates.io-index`
         Compiling lazy_static v0.1.10
         Compiling pkg-config v0.3.4
@@ -279,7 +279,7 @@
         Compiling cookie v0.1.20
         Compiling hyper v0.5.0
         Compiling iron v0.1.17
-        Compiling site-demo v0.1.0 (file:///home/wangyu/workspace/code/rust/site-demo)
+        Compiling site-demo v0.1.0 (file:///home/xxxx/workspace/code/rust/site-demo)
 
     完成依赖库的安装，下来开始写web版的hello world，打开src/main.rs文件，将这个[例子写入](http://ironframework.io/)
         
@@ -400,7 +400,7 @@
         Compiling cookie v0.1.20
         Compiling hyper v0.5.0
         Compiling iron v0.1.17
-        Compiling site-demo v0.1.0 (file:///home/wangyu/workspace/code/rust/site-demo)
+        Compiling site-demo v0.1.0 (file:///home/xxxx/workspace/code/rust/site-demo)
 
     完成编译,现在的release已经是web的了
     
