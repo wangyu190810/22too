@@ -24,5 +24,6 @@ def login():
 
 
 def logout():
-    session.pop("username")
+    if session.get("username"):
+        session.pop("username")
     return redirect("/")
