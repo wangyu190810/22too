@@ -55,7 +55,7 @@ class Blog(Base):
 
     @classmethod
     def get_arch_dates(cls, connection):
-        return connection.query(Blog.date).filter(Blog.status == 1).order_by(Blog.date.desc()).distinct()
+        return connection.query(Blog).filter(Blog.status == 1).order_by(Blog.date.desc()).distinct()
 
     @classmethod
     def get_blog_form_data(cls, connection, date):

@@ -10,7 +10,7 @@ from lib.decorator import validate_user_login
 
 def index():
     dates = Blog.get_arch_dates(g.db)
-    return render_template("index.html", blogs=Blog.index(g.db), dates=dates)
+    return render_template("index.html", blogs=Blog.index(g.db), archs=dates)
 
 
 @validate_user_login
@@ -74,9 +74,9 @@ def blog_change(blog_id):
     if request.method == "GET":
         return render_template("change.html", blogs=Blog.blog(g.db, blog_id=blog_id))
     else:
-        title, classify, content_md, tag, img, status = map(
+        title, classify, content_md, tag, img, status ,tag_title= map(
             request.form.get,
-            ("title", "classify", "content_md", "tag", "img", "status")
+            ("title", "classify", "content_md", "tag", "img", "status","tag_title")
         )
         Blog.blog_change(g.db,
                          blog_id=blog_id,
@@ -84,6 +84,7 @@ def blog_change(blog_id):
                          classify=classify,
                          content_md=content_md,
                          tag=tag, img=img,
-                         status=status)
+                         status=status,
+                         tag_title=tag_title)
         return redirect("/")
 
