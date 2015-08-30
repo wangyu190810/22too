@@ -2,7 +2,8 @@
  
 {% block title %}
     {% for blog in blogs %}
-       {{ blog.title}}
+        {{ blog.title}}
+        {{ blog.tag_title}}
     {% endfor %}
 {% endblock %}
 {% block content%}

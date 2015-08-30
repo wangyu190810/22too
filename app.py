@@ -12,7 +12,7 @@ from config import Config
 from view.toole import google,recent_feed
 from view.login import login, logout
 from view.blog import index, edit, search, blog, blog_classify_by_name, \
-    blog_change, set_blog_status,get_blog_from_date
+    blog_change, set_blog_status,get_blog_from_date,blog_tag_title
 from view.admin import admin_index
 
 app = Flask(__name__)
@@ -30,6 +30,7 @@ app.add_url_rule("/logout", view_func=logout, methods=["GET", "POST"])
 # ---- blog -----
 app.add_url_rule("/", view_func=index, methods=["GET", "POST"])
 app.add_url_rule("/blog/<int:blog_id>", view_func=blog, methods=["GET", "POST"])
+app.add_url_rule("/blog/<name>",view_func=blog_tag_title,methods=["GET"])
 app.add_url_rule("/classify/<name>", view_func=blog_classify_by_name, methods=["GET", "POST"])
 app.add_url_rule("/edit", view_func=edit, methods=["GET", "POST"])
 app.add_url_rule("/change/<int:blog_id>", view_func=blog_change, methods=["GET", "POST"])

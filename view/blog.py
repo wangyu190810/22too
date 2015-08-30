@@ -19,8 +19,12 @@ def edit():
         return render_template("edit.html")
 
     if request.method == "POST":
-        title, classify, content_md, tag, img = map(request.form.get, ("title", "classify", "content_md", "tag", "img"))
-        Blog.add_blog(g.db, title=title, content_md=content_md, classify=classify, tag=tag, img=img)
+        title, classify, content_md, tag, img,tag_title = map(request.form.get,
+
+                                                    ("title", "classify", "content_md", "tag", "img","tag_title"))
+        Blog.add_blog(g.db, title=title, content_md=content_md,
+                      classify=classify, tag=tag, img=img,
+                      tag_title=tag_title)
         return redirect("/")
 
 
@@ -41,6 +45,10 @@ def get_blog_from_date(date):
 
 def blog(blog_id):
     return render_template("details.html", blogs=Blog.blog(g.db, blog_id=blog_id, status=1))
+
+
+def blog_tag_title(name):
+    return render_template("details.html",blogs=Blog.blog_tag_title(g.db,name))
 
 
 def blog_classify_by_name(name):
@@ -78,3 +86,4 @@ def blog_change(blog_id):
                          tag=tag, img=img,
                          status=status)
         return redirect("/")
+

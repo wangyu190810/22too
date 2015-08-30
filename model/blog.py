@@ -26,11 +26,14 @@ class Blog(Base):
     readNum = Column(Integer, nullable=False, default=0)
     commentNum = Column(Integer, nullable=False, default=0)
     date = Column(Date, default=lambda: date.today())
+    tag_title = Column(String(80))
 
     @classmethod
-    def add_blog(cls, connection, title, content_md, classify, tag, img):
+    def add_blog(cls, connection, title, content_md, classify, tag, img,tag_title):
         content_html = markdown2.markdown(content_md)
-        blog = Blog(title=title, classify=classify, content_md=content_md, tag=tag, content_html=content_html, img=img)
+        blog = Blog(title=title, classify=classify, content_md=content_md,
+                    tag=tag, content_html=content_html, img=img,
+                    tag_title=tag_title)
         print blog
         connection.add(blog)
         connection.commit()
@@ -74,7 +77,7 @@ class Blog(Base):
         return connection.query(Blog).filter(Blog.tag.like(tag_name)).order_by(Blog.id.desc())
 
     @classmethod
-    def blog_change(cls, connection, blog_id, title, classify, content_md, tag, img, status):
+    def blog_change(cls, connection, blog_id, title, classify, content_md, tag, img, status,tag_title):
         content_html = markdown2.markdown(content_md)
         connection.query(Blog).filter(Blog.id == blog_id).update({
             "title": title,
@@ -83,10 +86,15 @@ class Blog(Base):
             "content_html": content_html,
             "status": status,
             "tag": tag,
-            "img": img
+            "img": img,
+            "tag_title":tag_title
         })
         connection.commit()
 
     @classmethod
     def rss_blog(cls,connection):
         return connection.query(Blog).order_by(Blog.id.desc())
+
+    @classmethod
+    def blog_tag_title(cls,connection,name):
+        return connection.query(Blog).filter(Blog.tag_title == name,Blog.status==1)
