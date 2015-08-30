@@ -4,7 +4,7 @@
   {% for blog in blogs %}
     <form method="post">
         博客标题<input type="text" name="title" value="{{ blog.title }}"></p>
-        自定义url<input type="text" name="tag_title"></p>
+        自定义url<input type="text" name="tag_title" value="{{ blog.tag_title }}"></p>
         博客标签<input type="text" name="tag" value="{{ blog.tag }}"></p>
         分类<select name="classify">
         {% if blog.classify %}
