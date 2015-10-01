@@ -14,6 +14,7 @@ from view.login import login, logout
 from view.blog import index, edit, search, blog, blog_classify_by_name, \
     blog_change, set_blog_status,get_blog_from_date,blog_tag_title
 from view.admin import admin_index
+from view.uploadimg import upload_file
 
 app = Flask(__name__)
 app.secret_key = Config.SUCCESS_KEY
@@ -42,6 +43,7 @@ app.add_url_rule("/date_arch/<date>",view_func=get_blog_from_date,methods=["GET"
 
 # ---- admin ----
 app.add_url_rule("/admin", view_func=admin_index,methods=["GET"])
+app.add_url_rule("/upload",view_func=upload_file,methods=["GET","POST"])
 
 
 # ----tool----

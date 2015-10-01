@@ -16,7 +16,7 @@ def index():
 @validate_user_login
 def edit():
     if request.method == "GET":
-        return render_template("edit.html")
+        return render_template("admin/edit.html")
 
     if request.method == "POST":
         title, classify, content_md, tag, img,tag_title = map(request.form.get,
@@ -72,7 +72,7 @@ def blog_classify_by_date(date):
 @validate_user_login
 def blog_change(blog_id):
     if request.method == "GET":
-        return render_template("change.html", blogs=Blog.blog(g.db, blog_id=blog_id))
+        return render_template("admin/change.html", blogs=Blog.blog(g.db, blog_id=blog_id))
     else:
         title, classify, content_md, tag, img, status ,tag_title= map(
             request.form.get,

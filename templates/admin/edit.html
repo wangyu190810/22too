@@ -1,12 +1,11 @@
-{% extends "base.html" %}
+{% extends "admin/admin_base.html" %}
 
 {% block title %}Edit{% endblock %}
 
 {% block content %}
   <form method="post">
-    博客标题<input type="text" name="title"></p>
-      自定义url<input type="text" name="tag_title"></p>
-    博客标签<input type="text" name="tag"></p>
+    博客标题<input type="text" name="title"> 自定义url<input type="text" name="tag_title"></p>
+    博客标签<input type="text" name="tag">
     分类<select name="classify">
     <option value="doc">文档</option>
     <option value="mind">心情</option>
@@ -21,11 +20,10 @@
     <option value="1">显示</option>
     <option value="0">不显示</option>
   </select>
+      <p></p>
 
     <textarea name="content_md" rows="10" cols="70%" placeholder="支持markdown编辑"></textarea>
 
-    <p></p>
-    <input type="" name="img"></p>
     <input type="submit">
   </form>
 {% endblock %}

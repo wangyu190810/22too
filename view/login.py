@@ -9,7 +9,7 @@ from model.user import User
 
 def login():
     if request.method == "GET":
-        return render_template("login.html")
+        return render_template("admin/login.html")
 
     username, password = map(request.form.get, ("username", "password"))
     has_user = User.has_user(g.db, username)
