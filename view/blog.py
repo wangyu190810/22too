@@ -31,7 +31,6 @@ def edit():
 def set_blog_status(blog_id):
     if request.method == "POST":
         data = request.form.get("status",int)
-        print data
         if Blog.set_blog_status(g.db,blog_id,status=data):
             return jsonify(status="success")
     return jsonify(status="false")

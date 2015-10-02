@@ -16,7 +16,7 @@ from view.blog import index, edit, search, blog, blog_classify_by_name, \
 from view.admin import admin_index
 from view.uploadimg import upload_file
 
-app = Flask(__name__)
+app = Flask(__name__,static_url_path="/static")
 app.secret_key = Config.SUCCESS_KEY
 app.permanent_session_lifetime = timedelta(minutes=60)
 app.config["SQLALCHEMY_DATABASE_URI"] = Config.db
