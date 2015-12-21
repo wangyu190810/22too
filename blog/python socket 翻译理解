@@ -1,0 +1,5 @@
+# socket Low-level networking interface
+
+这个模块提供使用BSD的socket接口，Unix系统支持所有的操作，Windows，Mac OS X，BeOS，OS/2和其他的一些系统大部分操作支持
+
+从c语言引入socket编程，

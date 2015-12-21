@@ -15,13 +15,14 @@ from view.blog import index, edit, search, blog, blog_classify_by_name, \
     blog_change, set_blog_status,get_blog_from_date,blog_tag_title
 from view.admin import admin_index
 from view.uploadimg import upload_file
+from view import laboratory as lab
 
 app = Flask(__name__)
 app.secret_key = Config.SUCCESS_KEY
 app.permanent_session_lifetime = timedelta(minutes=60)
 app.config["SQLALCHEMY_DATABASE_URI"] = Config.db
 
-app.sa_engine = create_engine(Config.db)
+app.sa_engine = create_engine(Config.db,echo=True)
 app.DBSession = scoped_session(sessionmaker(bind=app.sa_engine))
 
 # ---- user -----
@@ -39,6 +40,10 @@ app.add_url_rule("/search", view_func=search, methods=["GET"])
 app.add_url_rule("/status/<int:blog_id>",view_func=set_blog_status,methods=["POST"])
 app.add_url_rule("/date_arch/<date>",view_func=get_blog_from_date,methods=["GET"])
 
+# ----lab---
+app.add_url_rule("/add_lab",view_func=lab.add_lab,methods=["GET","POST"])
+app.add_url_rule("/index_lab",view_func=lab.index_template,methods=["GET"])
+app.add_url_rule("/api/api_lib_index",view_func=lab.api_lib_index,methods=["GET"])
 # app.add_url_rule("/tag/<tag>", view_func=blog_tag, methods=["GET", "POST"])
 
 # ---- admin ----

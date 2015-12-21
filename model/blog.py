@@ -34,7 +34,6 @@ class Blog(Base):
         blog = Blog(title=title, classify=classify, content_md=content_md,
                     tag=tag, content_html=content_html, img=img,
                     tag_title=tag_title)
-        print blog
         connection.add(blog)
         connection.commit()
 
