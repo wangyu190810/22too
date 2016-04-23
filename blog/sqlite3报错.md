@@ -12,27 +12,27 @@
 	    from _sqlite3 import *
 	ImportError: No module named _sqlite3
 
-³öÏÖµÄÔ­ÒòÊÇÃ»ÓĞ_sqlite3Õâ¸öÄÚ²¿¿â£¬µ«ÊÇÊ¹ÓÃfind ÃüÁî²éÕÒÖ®ºó·¢ÏÖ£º
+å‡ºç°çš„åŸå› æ˜¯æ²¡æœ‰_sqlite3è¿™ä¸ªå†…éƒ¨åº“ï¼Œä½†æ˜¯ä½¿ç”¨find å‘½ä»¤æŸ¥æ‰¾ä¹‹åå‘ç°ï¼š
 	
 	find / -name _sqlite3.so
 	/usr/usr/lib/python2.6/lib-dynload/_sqlite3.so
 	/usr/local/service/python2.7/lib/python2.7/lib-dynload/_sqlite3.so
 	/usr/lib64/python2.6/lib-dynload/_sqlite3.so
 	
-È»ºó½«£º
+ç„¶åå°†ï¼š
 	
 	cp /usr/local/service/python2.7/lib/python2.7/lib-dynload/_sqlite3.so /usr/local/lib/python2.7/sqlite3/
 	
-ÎÊÌâ½â¾ö£¬Õâ¸öÎÊÌâÓÃÁËËÄ¸öĞ¡Ê±£¬Ô­ÒòÊÇÒòÎª£¬ÎÒµÚÒ»´Î²Ù×÷ÊÇÕâÑùµÄ£º
+é—®é¢˜è§£å†³ï¼Œè¿™ä¸ªé—®é¢˜ç”¨äº†å››ä¸ªå°æ—¶ï¼ŒåŸå› æ˜¯å› ä¸ºï¼Œæˆ‘ç¬¬ä¸€æ¬¡æ“ä½œæ˜¯è¿™æ ·çš„ï¼š
 
 	cp /usr/usr/lib/python2.6/lib-dynload/_sqlite3.so /usr/local/lib/python2.7/sqlite3/
 	
-È»ºó³öÏÖÆæ¹ÖµÄbug£¬
+ç„¶åå‡ºç°å¥‡æ€ªçš„bugï¼Œ
 
-1. ²»ÄÜÊ¹ÓÃsqlalchemy½øĞĞ²Ù×÷¡£
-2. ×Ö·ûÏÔÊ¾²»È«£¬
+1. ä¸èƒ½ä½¿ç”¨sqlalchemyè¿›è¡Œæ“ä½œã€‚
+2. å­—ç¬¦æ˜¾ç¤ºä¸å…¨ï¼Œ
 
-µÚÒ»¸öÎÊÌâ£¬½â¾ö·½·¨Ö±½ÓÌæ»»µôsqlalchemy£¬Ê¹ÓÃÔ­Éúsqlite3Ö´ĞĞ
-µ«ÊÇµÚ¶ş¸öÎÊÌâ£¬ÎŞ·¨½â¾ö£¬×îÖÕ·¢ÏÖ[stackoverflow](http://stackoverflow.com/questions/11394013/problems-with-python-2-7-3-on-centos-with-sqlite3-module/34432084#34432084)
-Õâ¸öÎÊÌâÊÇ×Ô¼ºÊ¹ÓÃµÄÎÊÌâ£¬Ã»ÓĞÊ¹ÓÃfind £¬¶øÊÇÖ±½Ó½«2.6 ÏÂµÄcopy¹ıÈ¥¡£
+ç¬¬ä¸€ä¸ªé—®é¢˜ï¼Œè§£å†³æ–¹æ³•ç›´æ¥æ›¿æ¢æ‰sqlalchemyï¼Œä½¿ç”¨åŸç”Ÿsqlite3æ‰§è¡Œ
+ä½†æ˜¯ç¬¬äºŒä¸ªé—®é¢˜ï¼Œæ— æ³•è§£å†³ï¼Œæœ€ç»ˆå‘ç°[stackoverflow](http://stackoverflow.com/questions/11394013/problems-with-python-2-7-3-on-centos-with-sqlite3-module/34432084#34432084)
+è¿™ä¸ªé—®é¢˜æ˜¯è‡ªå·±ä½¿ç”¨çš„é—®é¢˜ï¼Œæ²¡æœ‰ä½¿ç”¨find ï¼Œè€Œæ˜¯ç›´æ¥å°†2.6 ä¸‹çš„copyè¿‡å»ã€‚
 
