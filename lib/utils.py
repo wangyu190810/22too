@@ -5,7 +5,7 @@ __author__ = 'wangyu'
 from random import choice
 from string import ascii_letters
 from flask import make_response
-
+from functools import wraps
 def random_string(length=8, letters=ascii_letters):
     return ''.join(choice(letters) for _ in range(length))
 
