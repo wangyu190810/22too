@@ -9,7 +9,7 @@ from lib.decorator import validate_user_login
 from lib.utils import allow_cross_domain
 
 @allow_cross_domain
-def index():
+def api_index():
     dates = Blog.get_arch_dates(g.db)
     return jsonify.dumps(blogs = Blog.index(g.db))
     
