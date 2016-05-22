@@ -15,6 +15,7 @@ from view.blog import index, edit, search, blog, blog_classify_by_name, \
     blog_change, set_blog_status,get_blog_from_date,blog_tag_title
 from view.admin import admin_index
 from view.uploadimg import upload_file
+from view.restful import api_index
 from view import laboratory as lab
 
 app = Flask(__name__)
@@ -55,6 +56,8 @@ app.add_url_rule("/upload",view_func=upload_file,methods=["GET","POST"])
 app.add_url_rule("/googlefad2f2add41d5dac.html", view_func=google)
 app.add_url_rule("/recent.atom", view_func=recent_feed)
 
+# ----API-----
+app.add_url_rule("/api/index", view_func=api_index)
 
 @app.before_request
 def _before_request():
