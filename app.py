@@ -23,7 +23,7 @@ app.secret_key = Config.SUCCESS_KEY
 app.permanent_session_lifetime = timedelta(minutes=60)
 app.config["SQLALCHEMY_DATABASE_URI"] = Config.db
 
-app.sa_engine = create_engine(Config.db,echo=True)
+app.sa_engine = create_engine(Config.db,echo=False)
 app.DBSession = scoped_session(sessionmaker(bind=app.sa_engine))
 
 # ---- user -----
