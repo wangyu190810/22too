@@ -8,4 +8,4 @@ from lib.decorator import validate_user_login
 
 @validate_user_login
 def admin_index():
-    return render_template("admin.html", blogs=Blog.admin_index(g.db))
+    return render_template("admin/admin.html", blogs=Blog.admin_index(g.db))

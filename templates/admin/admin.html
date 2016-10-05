@@ -1,0 +1,32 @@
+{% extends "admin/admin_base.html" %}
+
+{% block title %}Admin{% endblock %}
+
+{% block content %}
+    {% for blog in blogs %}
+
+        <p>
+         <div class="col-md-1">{{blog.id}}</div>
+         <div class="col-md-3">{{blog.date}}</div>
+         <div class="col-md-4">{{blog.title}}</div>
+         <div class="col-md-1"> <a href="/change/{{blog.id}}" >edit </a></div>
+         <div class="col-md-3"> <button class="my_button" id = {{blog.id}} name = {{blog.id}} value="{{blog.status}}">{%if blog.status%}正在显示{%else%}已经删除{%endif%}</button> </div>
+        </p>
+        <script>
+            $(document).ready(function(){
+                $("#{{blog.id}}").click(function(){
+                    $.post("status/"+{{blog.id}},
+                        {status:{{blog.status}}},
+                        function(result){
+                            alert(result.status);
+                        });
+                });
+            });
+        </script>
+
+
+    {%endfor%}
+</div>
+<!-- /.container -->
+{% endblock %}
+

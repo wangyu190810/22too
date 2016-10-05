@@ -10,24 +10,27 @@ from lib.decorator import validate_user_login
 
 def index():
     dates = Blog.get_arch_dates(g.db)
-    return render_template("index.html", blogs=Blog.index(g.db), dates=dates)
+    return render_template("index.html", blogs=Blog.index(g.db), archs=dates)
 
 
 @validate_user_login
 def edit():
     if request.method == "GET":
-        return render_template("edit.html")
+        return render_template("admin/edit.html")
 
     if request.method == "POST":
-        title, classify, content_md, tag, img = map(request.form.get, ("title", "classify", "content_md", "tag", "img"))
-        Blog.add_blog(g.db, title=title, content_md=content_md, classify=classify, tag=tag, img=img)
+        title, classify, content_md, tag, img,tag_title = map(request.form.get,
+
+                                                    ("title", "classify", "content_md", "tag", "img","tag_title"))
+        Blog.add_blog(g.db, title=title, content_md=content_md,
+                      classify=classify, tag=tag, img=img,
+                      tag_title=tag_title)
         return redirect("/")
 
 
 def set_blog_status(blog_id):
     if request.method == "POST":
         data = request.form.get("status",int)
-        print data
         if Blog.set_blog_status(g.db,blog_id,status=data):
             return jsonify(status="success")
     return jsonify(status="false")
@@ -41,6 +44,10 @@ def get_blog_from_date(date):
 
 def blog(blog_id):
     return render_template("details.html", blogs=Blog.blog(g.db, blog_id=blog_id, status=1))
+
+
+def blog_tag_title(name):
+    return render_template("details.html",blogs=Blog.blog_tag_title(g.db,name))
 
 
 def blog_classify_by_name(name):
@@ -64,11 +71,11 @@ def blog_classify_by_date(date):
 @validate_user_login
 def blog_change(blog_id):
     if request.method == "GET":
-        return render_template("change.html", blogs=Blog.blog(g.db, blog_id=blog_id))
+        return render_template("admin/change.html", blogs=Blog.blog(g.db, blog_id=blog_id))
     else:
-        title, classify, content_md, tag, img, status = map(
+        title, classify, content_md, tag, img, status ,tag_title= map(
             request.form.get,
-            ("title", "classify", "content_md", "tag", "img", "status")
+            ("title", "classify", "content_md", "tag", "img", "status","tag_title")
         )
         Blog.blog_change(g.db,
                          blog_id=blog_id,
@@ -76,5 +83,7 @@ def blog_change(blog_id):
                          classify=classify,
                          content_md=content_md,
                          tag=tag, img=img,
-                         status=status)
+                         status=status,
+                         tag_title=tag_title)
         return redirect("/")
+

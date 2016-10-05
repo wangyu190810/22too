@@ -1,1 +1,1 @@
-function status(blog):
+function status(blog){}

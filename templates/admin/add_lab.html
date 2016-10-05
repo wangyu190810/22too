@@ -1,0 +1,15 @@
+{% extends "admin/admin_base.html" %}
+
+{% block title %}Edit{% endblock %}
+
+{% block content %}
+  <form method="post">
+    博客标题<input type="text" name="key">
+
+      <p>
+          <textarea name="values" rows="10" cols="70%" placeholder="支持markdown编辑"></textarea>
+      </p>
+
+    <input type="submit">
+  </form>
+{% endblock %}
