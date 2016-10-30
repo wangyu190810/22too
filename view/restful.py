@@ -15,6 +15,11 @@ def api_index():
     
     #return render_template("index.html", blogs=Blog.index(g.db), archs=dates)
 
+@allow_cross_domain
+def api_last():
+    pass
+    
+
 
 @validate_user_login
 @allow_cross_domain
