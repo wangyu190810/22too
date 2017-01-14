@@ -9,7 +9,9 @@ from lib.decorator import validate_user_login
 
 
 def index_template():
-    return render_template("laboratory.html")
+    lab_data = Laboratory.show_all(g.db)
+    print(lab_data)
+    return render_template("laboratory.html",json_data = lab_data)
 
 
 @validate_user_login
@@ -20,7 +22,7 @@ def add_lab():
         key ,values = map(request.form.get,("key","values"))
         Laboratory.insert(g.db,key=key,json_data={"data":values})
         return render_template("laboratory.html")
-
+                
 def api_lib_index():
     stmt =  Laboratory.show_last(g.db)
     if stmt:
@@ -28,3 +30,17 @@ def api_lib_index():
         return jsonify(data=stmt)
     else:
         return jsonify({"data":""})
+
+def api_lib_data(json_key):
+    stmt = Laboratory.get_data(g.db, json_key)
+    if stmt:
+        # stmt = stmt[0]
+        return jsonify(data=stmt)
+    else:
+        return jsonify({"data":""})
+    # for row in stmt:
+    #     if row is None:
+    #         return jsonify({"data":"false"})
+    # else:
+    #     return jsonify(data=row)
+

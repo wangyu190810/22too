@@ -5,5 +5,11 @@
 
 {% block content %}
     <div id="last">
+        
     </div>
+    {%for row in json_data%}
+        <li><a href ="/api/api_lib_data?json_data={{row.key}}"> {{row.key}}</a></li>
+        
+    {%endfor%}
+    
 {% endblock %}

@@ -23,7 +23,7 @@ class Laboratory(Base):
 
     @classmethod
     def get_data(cls, connection, key):
-        return connection.query(Laboratory).filter(Laboratory.key==key)
+        return connection.query(Laboratory).filter(Laboratory.key==key).limit(1).first()
 
     @classmethod
     def show_last(cls, connection):
@@ -33,4 +33,4 @@ class Laboratory(Base):
     def show_all(cls, connection, index=1, size=15):
         start = (index -1 ) * size
         end = index * size - 1
-        return connection.query(Laboratory).order_by(Laboratory.system_time.desc()).limit(start,end)
+        return connection.query(Laboratory).order_by(Laboratory.system_time.desc()).all()

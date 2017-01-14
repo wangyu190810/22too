@@ -45,6 +45,7 @@ app.add_url_rule("/date_arch/<date>",view_func=get_blog_from_date,methods=["GET"
 app.add_url_rule("/add_lab",view_func=lab.add_lab,methods=["GET","POST"])
 app.add_url_rule("/index_lab",view_func=lab.index_template,methods=["GET"])
 app.add_url_rule("/api/api_lib_index",view_func=lab.api_lib_index,methods=["GET"])
+app.add_url_rule("/api/api_lib_data/<json_key>",view_func=lab.api_lib_data,methods=["GET"])
 # app.add_url_rule("/tag/<tag>", view_func=blog_tag, methods=["GET", "POST"])
 
 # ---- admin ----

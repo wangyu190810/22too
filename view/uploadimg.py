@@ -23,7 +23,6 @@ def upload_file():
         head = request.files["head"]
         if head and allowed_file(head.filename):
             filename = secure_filename(head.filename)
-            print filename
             head.save(os.path.join(Config.upload_folder, filename))
 
             return jsonify(status="success")
