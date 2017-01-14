@@ -35,7 +35,7 @@ def api_lib_data(json_key):
     stmt = Laboratory.get_data(g.db, json_key)
     if stmt:
         # stmt = stmt[0]
-        return jsonify(data=stmt)
+        return jsonify(data=stmt.content)
     else:
         return jsonify({"data":""})
     # for row in stmt:
