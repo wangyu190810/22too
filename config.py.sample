@@ -6,4 +6,4 @@ __author__ = 'wangyu'
 class Config(object):
     db = "postgresql://postgres:2015@localhost:5432/22too?"
     SUCCESS_KEY = "change me"
-    upload_folder = "uploadfile"
+    upload_folder = ".\static\upload"
