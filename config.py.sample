@@ -6,4 +6,5 @@ __author__ = 'wangyu'
 class Config(object):
     db = "postgresql://postgres:2015@localhost:5432/22too?"
     SUCCESS_KEY = "change me"
+    allowed_extensions = "set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])"
     upload_folder = ".\static\upload"
