@@ -27,7 +27,7 @@ class Laboratory(Base):
 
     @classmethod
     def show_last(cls, connection):
-        return connection.query(Laboratory.key,Laboratory.content).order_by(Laboratory.system_time.desc()).limit(1)
+        return connection.query(Laboratory.key,Laboratory.content).order_by(Laboratory.system_time.desc()).limit(1).first()
 
     @classmethod
     def show_all(cls, connection, index=1, size=15):

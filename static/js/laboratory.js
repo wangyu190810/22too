@@ -22,7 +22,8 @@ last = function(url){
     last_callback = function(data){
         var resp_json = JSON.parse(data);
         console.log(resp_json);
-        document.getElementById("last").innerHTML = resp_json.data.content.data;
+        document.getElementById("key").innerHTML = resp_json.key;
+        document.getElementById("data").innerHTML = resp_json.data
 
     }
     var stmt;

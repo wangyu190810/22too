@@ -9,7 +9,7 @@ from sqlalchemy.orm import sessionmaker, scoped_session
 from sqlalchemy import create_engine
 
 from config import Config
-from view.toole import google,recent_feed
+from view.toole import google,recent_feed,json_parse
 from view.login import login, logout
 from view.blog import index, edit, search, blog, blog_classify_by_name, \
     blog_change, set_blog_status,get_blog_from_date,blog_tag_title
@@ -56,7 +56,7 @@ app.add_url_rule("/upload",view_func=upload_file,methods=["GET","POST"])
 # ----tool----
 app.add_url_rule("/googlefad2f2add41d5dac.html", view_func=google)
 app.add_url_rule("/recent.atom", view_func=recent_feed)
-
+app.add_url_rule("/json_parse",view_func=json_parse)
 # ----API-----
 app.add_url_rule("/api/index", view_func=api_index)
 

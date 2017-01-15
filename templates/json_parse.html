@@ -1,0 +1,30 @@
+
+{% extends "root_base.html" %}
+
+{% block nav %}{% include "nav.html" %}{% endblock %}
+
+
+{% block title %}YuBlog | 看见不同的世界{% endblock %}
+
+
+{% block container %}
+  <div class="row">
+     <div id="app">
+
+
+        <div class="col-sm-6">
+            json value
+            <p>
+            <span v-text="json_data"></span>
+                <textarea name="values" rows="5" cols="50%" placeholder="json value" v-model="json_data"></textarea>
+            </p>
+            <button v-on:click="json_pares_method">json parse</button>     
+        </div>
+        <div class="col-sm-6">
+            <span v-html="json_object"></span>
+        </div>
+  </div>
+  </div>
+
+{% endblock %}
+

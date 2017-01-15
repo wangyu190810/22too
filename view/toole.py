@@ -21,6 +21,8 @@ def make_external(url):
 def google():
     return render_template("googlefad2f2add41d5dac.html")
 
+def json_parse():
+    return render_template("json_parse.html")
 
 
 def recent_feed():

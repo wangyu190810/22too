@@ -4,12 +4,36 @@
 
 
 {% block content %}
-    <div id="last">
-        
+    <div id="key">
     </div>
+    <div id = 'data'>
+    </div>
+    <div id = 'json_value'>
     {%for row in json_data%}
-        <li><a href ="/api/api_lib_data/{{row.key}}"> {{row.key}}</a></li>
+        <li>key <a href ="javascript:last('/api/api_lib_data/{{row.key}}')"> {{row.key}}</a> value {message}$<p >v-bind.value={{row.content}}</p> </li>
+        
         
     {%endfor%}
+    </div>
+    
     
 {% endblock %}
+
+<script type="javascript">
+
+    var json_value = new Vue({
+    el: '#json_value',
+    data: {
+        message:'',
+        value:''
+    },
+    methods:{
+        aaa: function(value){
+            this.message = value.data
+        }
+        
+
+    }
+})
+
+</script>

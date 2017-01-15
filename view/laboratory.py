@@ -20,14 +20,20 @@ def add_lab():
         return render_template("admin/add_lab.html")
     else:
         key ,values = map(request.form.get,("key","values"))
+        stmt = Laboratory.get_data(g.db, key)
+        if stmt:
+            return jsonify(data=stmt.content)
+
         Laboratory.insert(g.db,key=key,json_data={"data":values})
         return render_template("laboratory.html")
                 
 def api_lib_index():
     stmt =  Laboratory.show_last(g.db)
     if stmt:
-        stmt = stmt[0]
-        return jsonify(data=stmt)
+        print(dir(stmt))
+        key = stmt.key
+        data = stmt.content
+        return jsonify(data=data, key=key)
     else:
         return jsonify({"data":""})
 
