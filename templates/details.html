@@ -11,6 +11,7 @@
     {% for blog in blogs %}
         <p>{{ blog.title}}</p>
         <p>{{ blog.date }}</p>
+        <p>{{ blog.tag }}</p>
         {{blog.content_html|safe}}
 
 
