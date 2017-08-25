@@ -12,15 +12,15 @@
 or woman with not in toilet  
 
 用python语言表示上面对的逻辑：
-```python 
-propel = input("输入性别:")
-if propel is "man":
-    print("will in man toilet")
-elif propel is "woamn":
-    print("will in woman toilet")
-else:
-    print("will not in every toilet")
-```
+    
+    propel = input("输入性别:")
+    if propel is "man":
+        print("will in man toilet")
+    elif propel is "woamn":
+        print("will in woman toilet")
+    else:
+        print("will not in every toilet")
+    
 使用伪代码说明一下:
 
     propel = 用户输入值
@@ -35,16 +35,15 @@ else:
 
 ### 使用python画图
 
-```python 
 
-# 使用matplotlib 库，画图
-import matplotlib.pyplot as plt
-# 定义坐标点
-plt.plot([1,2,3,4], [1,4,9,16])
-# 展示绘制图形
-plt.show()
+    # 使用matplotlib 库，画图
+    import matplotlib.pyplot as plt
+    # 定义坐标点
+    plt.plot([1,2,3,4], [1,4,9,16])
+    # 展示绘制图形
+    plt.show()
 
-```
+
 ![折线图](http://tools.22too.com/static/upload/1503676899.png)
 
 是不是和简单，当你需要更加复杂或者强大的功能时候，[请参看教程](http://matplotlib.org/users/pyplot_tutorial.html#controlling-line-properties)
@@ -53,4 +52,5 @@ plt.show()
 ### 同样其他有意思的都可以做
 
 你想要什么，我们就去实现什么
+
 
