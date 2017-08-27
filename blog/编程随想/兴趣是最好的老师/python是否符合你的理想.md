@@ -12,7 +12,8 @@
 or woman with not in toilet  
 
 用python语言表示上面对的逻辑：
-    
+```python
+
     propel = input("输入性别:")
     if propel is "man":
         print("will in man toilet")
@@ -20,7 +21,7 @@ or woman with not in toilet
         print("will in woman toilet")
     else:
         print("will not in every toilet")
-    
+```
 使用伪代码说明一下:
 
     propel = 用户输入值
@@ -34,7 +35,7 @@ or woman with not in toilet
 是不是感觉代码就和伪代码一样清晰，只要自己逻辑是清晰的。那我们就能写好代码
 
 ### 使用python画图
-
+```python
 
     # 使用matplotlib 库，画图
     import matplotlib.pyplot as plt
@@ -43,6 +44,7 @@ or woman with not in toilet
     # 展示绘制图形
     plt.show()
 
+```
 
 ![折线图](http://tools.22too.com/static/upload/1503676899.png)
 
