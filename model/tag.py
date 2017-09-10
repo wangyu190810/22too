@@ -13,8 +13,8 @@ sqlalchemy.func.yearmonth()
 from base import Base
 
 
-class Blog(Base):
-    __tablename__ = "blog"
+class Tag(Base):
+    __tablename__ = "tag"
     id = Column(Integer, primary_key=True, autoincrement=True)
     title = Column(String(80))
     content_md = Column(TEXT)
@@ -30,8 +30,7 @@ class Blog(Base):
 
     @classmethod
     def add_blog(cls, connection, title, content_md, classify, tag, img,tag_title):
-        m = markdown2.Markdown()
-        content_html =  m.convert(m)
+        content_html = markdown2.markdown(content_md)
         blog = Blog(title=title, classify=classify, content_md=content_md,
                     tag=tag, content_html=content_html, img=img,
                     tag_title=tag_title)
