@@ -10,8 +10,8 @@
 {% block content%}
     {% for blog in blogs %}
         <p>{{ blog.title}}</p>
-        <p>{{ blog.date }}</p>
-        <p>{{ blog.tag }}</p>
+        <p>发布日期:{{ blog.date }}</p>
+        <p>标签:{{ blog.tag }}</p>
         {{blog.content_html|safe}}
 
 
