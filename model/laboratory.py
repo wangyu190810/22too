@@ -5,7 +5,7 @@ __author__ = 'wangyu'
 from datetime import date
 
 from sqlalchemy import Column, Integer, TEXT,Date,VARCHAR
-from sqlalchemy.dialects.postgres import JSON
+from sqlalchemy.types import JSON
 from .base import Base
 
 

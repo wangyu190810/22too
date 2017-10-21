@@ -15,7 +15,7 @@ from view.blog import index, edit, search, blog, blog_classify_by_name, \
     blog_change, set_blog_status,get_blog_from_date,blog_tag_title
 from view.admin import admin_index
 from view.uploadimg import upload_file
-from view.restful import api_index
+from view.restful import api_index,api_blog,api_archs,api_blog_tag_title
 from view import laboratory as lab
 
 app = Flask(__name__)
@@ -59,6 +59,9 @@ app.add_url_rule("/recent.atom", view_func=recent_feed)
 app.add_url_rule("/json_parse",view_func=json_parse)
 # ----API-----
 app.add_url_rule("/api/index", view_func=api_index)
+app.add_url_rule("/api/blog/<int:blog_id>", view_func=api_blog)
+app.add_url_rule("/api/archs", view_func=api_archs)
+app.add_url_rule("/api/tag_title/<name>", view_func=api_blog_tag_title)
 
 @app.before_request
 def _before_request():
