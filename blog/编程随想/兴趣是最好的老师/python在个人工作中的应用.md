@@ -34,8 +34,10 @@
 
 #### 数据分析
 
-当然我们经常经常也会看到，很多帖子
+当然我们经常经常也会看到，很多帖子:
+
 [我用Python分析了42万字的歌词，为了搞清楚民谣歌手们在唱些什么](https://zhuanlan.zhihu.com/p/25430454)
+
 [我用Python做了六百万字的歌词分析，告诉你中国Rapper都在唱些啥](http://wemedia.ifeng.com/25046178/wemedia.shtml)
 
 分析股票相关信息

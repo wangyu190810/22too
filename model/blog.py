@@ -31,7 +31,7 @@ class Blog(Base):
     @classmethod
     def add_blog(cls, connection, title, content_md, classify, tag, img,tag_title):
         m = markdown2.Markdown()
-        content_html =  m.convert(m)
+        content_html =  m.convert(content_md)
         blog = Blog(title=title, classify=classify, content_md=content_md,
                     tag=tag, content_html=content_html, img=img,
                     tag_title=tag_title)
