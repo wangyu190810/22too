@@ -6,7 +6,7 @@ from flask import render_template, request, g, redirect, jsonify
 
 from model.laboratory import Laboratory
 from lib.decorator import validate_user_login
-
+from lib.utils import allow_cross_domain
 
 def index_template():
     lab_data = Laboratory.show_all(g.db)
@@ -26,7 +26,8 @@ def add_lab():
 
         Laboratory.insert(g.db,key=key,json_data={"data":values})
         return render_template("laboratory.html")
-                
+
+@allow_cross_domain                
 def api_lib_index():
     stmt =  Laboratory.show_last(g.db)
     if stmt:
