@@ -7,7 +7,6 @@ from flask import render_template, request, g, redirect, jsonify
 from model.blog import Blog
 from lib.decorator import validate_user_login
 from lib.utils import allow_cross_domain
-a
 
 @allow_cross_domain
 def api_blog(blog_id):
