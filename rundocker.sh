@@ -1,0 +1,1 @@
+docker build -t niziyou/niziyou:v1 . 
