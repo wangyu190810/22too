@@ -10,7 +10,7 @@ import sqlalchemy
 
 sqlalchemy.func.yearmonth()
 
-from base import Base
+from .base import Base
 
 
 class Tag(Base):

@@ -5,9 +5,13 @@ __author__ = 'wangyu'
 from datetime import time
 
 from flask import render_template
-from urlparse import urljoin
+from urllib.parse import urljoin
 from flask import request,g
-from werkzeug.contrib.atom import AtomFeed
+
+try:
+    from werkzeug.contrib.atom import AtomFeed
+except ImportError:
+    AtomFeed = None
 
 from model.blog import Blog
 from lib.decorator import GMT1,get_time
@@ -26,15 +30,17 @@ def json_parse():
 
 
 def recent_feed():
+    if AtomFeed is None:
+        return "Atom feed not available (werkzeug.contrib.atom removed)", 501
     feed = AtomFeed('Recent Articles',
                     feed_url=request.url, url=request.url_root)
     articles = Blog.rss_blog(g.db)
     for article in articles:
-        print article.date
+        print(article.date)
         dir(article.date)
         data = get_time(article.date)
 
-        feed.add(article.title, unicode(article.content_html),
+        feed.add(article.title, str(article.content_html),
                  content_type='html',
                  author="22too",
                  url=make_external("http://www.22too.com/blog/"+str(article.id)),

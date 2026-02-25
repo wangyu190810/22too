@@ -6,7 +6,7 @@ import hashlib
 
 from sqlalchemy import Column, String, Integer
 
-from base import Base
+from .base import Base
 from lib.utils import random_string
 
 
@@ -33,7 +33,7 @@ class User(Base):
     def encrypt_password(self, password, salt=None):
         if not salt:
             salt = self.password_salt or self.regenerate_salt()
-        return hashlib.sha256('%s - %s' % (password, salt)).hexdigest()
+        return hashlib.sha256(('%s - %s' % (password, salt)).encode('utf-8')).hexdigest()
 
     def regenerate_salt(self):
         self.password_salt = random_string(8)
